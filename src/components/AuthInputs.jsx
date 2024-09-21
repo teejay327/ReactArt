@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Input from './Input.jsx';
 
 export default function AuthInputs() {
   const [enteredEmail, setEnteredEmail] = useState('');
@@ -25,24 +26,26 @@ export default function AuthInputs() {
       bg-gradient-to-b from-stone-700 to-stone-800">
 
       <div className="flex flex-col gap-2 mb-6">
-        <p>
-          <label className={`label ${ emailNotValid ? 'invalid' : ''}`}>Email</label>
-          <input
-            type="email"
-            className={emailNotValid ? 'invalid' : undefined}
-            onChange={(event) => handleInputChange('email', event.target.value)}
-          />
-        </p>
-        <p>
-          <label className={`label ${ emailNotValid ? 'invalid' : ''}`}>Password</label>
-          <input
+
+        <Input
+          label="Email"
+          invalid={ emailNotValid }
+          type="email"
+          onChange={(event) => handleInputChange('email', event.target.value)}
+        />
+
+
+      
+          <Input
+            label="Password"
+            invalid={ passwordNotValid }
             type="password"
-            className={passwordNotValid ? 'invalid' : undefined}
             onChange={(event) =>
               handleInputChange('password', event.target.value)
             }
           />
-        </p>
+
+
       </div>
       <div className="flex justify-end gap-4">
         <button type="button" className="text-amber-400 hover:text-amber-500">
